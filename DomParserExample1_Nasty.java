@@ -11,16 +11,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
 public class DomParserExample1_Nasty {
 	//No generics
-	static List myEmpls; static Document dom;
-	public DomParserExample1_Nasty(){
-		//create a list to hold the employee objects
-		myEmpls = new ArrayList();
-	}
+	static List myEmpls = new ArrayList(); 
+	static Document dom;
+
 	public static void main(String[] args){
 		//parse the xml file and get the dom object
-		//get the factory
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		try {
 			//Using factory get an instance of document builder
@@ -28,7 +26,6 @@ public class DomParserExample1_Nasty {
 			//parse using builder to get DOM representation of the XML file
 			dom = db.parse("employees.xml");
 			//get each employee element and create a Employee object
-			//get the root elememt
 			Element docEle = dom.getDocumentElement();
 			//get a nodelist of <employee> elements
 			NodeList nl = docEle.getElementsByTagName("Employee");
@@ -37,11 +34,9 @@ public class DomParserExample1_Nasty {
 					//get the employee element
 					Element el = (Element)nl.item(i);
 					//get the Employee object
-					//for each <employee> element get text or int values of 
-					//name ,id, age and name
-					String name = getTextValue(el,"Name");
-					int id = getIntValue(el,"Id");
-					int age = getIntValue(el,"Age");
+					String name = ((Element)(el.getElementsByTagName("Name").item(0))).getFirstChild().getNodeValue();
+					int id = Integer.parseInt(((Element)(el.getElementsByTagName("Id").item(0))).getFirstChild().getNodeValue());
+					int age = Integer.parseInt(((Element)(el.getElementsByTagName("Age").item(0))).getFirstChild().getNodeValue());
 					String type = el.getAttribute("type");
 					//Create a new Employee with the value read from the xml nodes
 					Employee e = new Employee(name,id,age,type);
@@ -59,34 +54,5 @@ public class DomParserExample1_Nasty {
 		catch(ParserConfigurationException pce) { pce.printStackTrace(); }
 		catch(SAXException se) { se.printStackTrace(); }
 		catch(IOException ioe) { ioe.printStackTrace(); }
-	}
-	/**
-	 * I take a xml element and the tag name, look for the tag and get
-	 * the text content 
-	 * i.e for <employee><name>John</name></employee> xml snippet if
-	 * the Element points to employee node and tagName is name I will return John  
-	 * @param ele
-	 * @param tagName
-	 * @return
-	 */
-	private static String getTextValue(Element ele, String tagName) {
-		String textVal = null;
-		NodeList nl = ele.getElementsByTagName(tagName);
-		if(nl != null && nl.getLength() > 0) {
-			Element el = (Element)nl.item(0);
-			textVal = el.getFirstChild().getNodeValue();
-		}
-
-		return textVal;
-	}
-	/**
-	 * Calls getTextValue and returns a int value
-	 * @param ele
-	 * @param tagName
-	 * @return
-	 */
-	private static int getIntValue(Element ele, String tagName) {
-		//in production application you would catch the exception
-		return Integer.parseInt(getTextValue(ele,tagName));
 	}
 }
