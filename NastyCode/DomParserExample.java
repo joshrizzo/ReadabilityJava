@@ -1,3 +1,5 @@
+package NastyCode;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,7 +14,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class DomParserExample1_Nasty {
+public class DomParserExample {
 	//No generics
 	static List myEmpls = new ArrayList(); 
 	static Document dom;

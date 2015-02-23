@@ -1,3 +1,5 @@
+package OriginalCode;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,14 +14,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class DomParserExample3_VarRename {
+public class DomParserExample {
 
 	//No generics
 	List myEmpls;
 	Document dom;
 
 
-	public DomParserExample3_VarRename(){
+	public DomParserExample(){
 		//create a list to hold the employee objects
 		myEmpls = new ArrayList();
 	}
@@ -68,7 +70,7 @@ public class DomParserExample3_VarRename {
 		//get a nodelist of <employee> elements
 		NodeList nl = docEle.getElementsByTagName("Employee");
 		if(nl != null && nl.getLength() > 0) {
-			for(int i = 0 ; i < nl.getLength();i++) {
+			for(int i = 0; i < nl.getLength(); i++) {
 				
 				//get the employee element
 				Element el = (Element)nl.item(i);
@@ -116,6 +118,7 @@ public class DomParserExample3_VarRename {
 	 * @return
 	 */
 	private String getTextValue(Element ele, String tagName) {
+		//replaces el.getElementsByTagName("Id").item(0))).getFirstChild().getNodeValue()
 		String textVal = null;
 		NodeList nl = ele.getElementsByTagName(tagName);
 		if(nl != null && nl.getLength() > 0) {
@@ -155,7 +158,7 @@ public class DomParserExample3_VarRename {
 	
 	public static void main(String[] args){
 		//create an instance
-		DomParserExample3_VarRename dpe = new DomParserExample3_VarRename();
+		DomParserExample dpe = new DomParserExample();
 		
 		//call run example
 		dpe.runExample();
