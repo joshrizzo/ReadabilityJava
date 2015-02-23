@@ -12,14 +12,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class DomParserExample {
+public class DomParserExample3_VarRename {
 
 	//No generics
 	List myEmpls;
 	Document dom;
 
 
-	public DomParserExample(){
+	public DomParserExample3_VarRename(){
 		//create a list to hold the employee objects
 		myEmpls = new ArrayList();
 	}
@@ -155,7 +155,7 @@ public class DomParserExample {
 	
 	public static void main(String[] args){
 		//create an instance
-		DomParserExample dpe = new DomParserExample();
+		DomParserExample3_VarRename dpe = new DomParserExample3_VarRename();
 		
 		//call run example
 		dpe.runExample();
