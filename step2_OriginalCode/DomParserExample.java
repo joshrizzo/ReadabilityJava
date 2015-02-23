@@ -1,4 +1,4 @@
-package OriginalCode;
+package step2_OriginalCode;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +13,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import common.Employee;
+
 
 public class DomParserExample {
 

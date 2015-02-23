@@ -1,18 +1,14 @@
-package NastyCode;
-
+package common;
 
 public class Employee {
 
 	private String name;
-
 	private int age;
-	
 	private int id;
-
 	private String type;
 	
 	public Employee(){
-		
+		//Empty constructor for convenience.
 	}
 	
 	public Employee(String name, int id, int age,String type) {
@@ -20,8 +16,8 @@ public class Employee {
 		this.age = age;
 		this.id  = id;
 		this.type = type;
-		
 	}
+
 	public int getAge() {
 		return age;
 	}
@@ -46,7 +42,6 @@ public class Employee {
 		this.name = name;
 	}
 
-
 	public String getType() {
 		return type;
 	}
@@ -55,8 +50,8 @@ public class Employee {
 		this.type = type;
 	}	
 	
-	
 	public String toString() {
+		
 		StringBuffer sb = new StringBuffer();
 		sb.append("Employee Details - ");
 		sb.append("Name:" + getName());
