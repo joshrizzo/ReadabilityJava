@@ -1,4 +1,4 @@
-package step3_CleanCode;
+package common;
 
 public class ParseEmployeeXmlException extends Exception {
 	

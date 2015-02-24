@@ -1,4 +1,4 @@
-package step3_CleanCode;
+package step4_RefactoredCode;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,9 +19,9 @@ import common.Employee;
 import common.ParseEmployeeXmlException;
 
 
-public class DomParserExample {																	///NOTE: Methods now "protected" level for testability.
+public class DomParserExample {
 	
-	public static void main() {																	///NOTE: Main() at top of class.
+	public static void main(String[] args) {													///NOTE: Main() at top of class.
 		
 		try {
 			new DomParserExample().runExample();												///NOTE: This is all on one line now.
@@ -37,7 +37,7 @@ public class DomParserExample {																	///NOTE: Methods now "protected"
 		printEmployeesToConsole(employees);
 	}
 	
-	protected Document parseXmlFile() throws ParseEmployeeXmlException {
+	private Document parseXmlFile() throws ParseEmployeeXmlException {
 		
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();						///NOTE: Do we like this var name?
 
@@ -50,7 +50,7 @@ public class DomParserExample {																	///NOTE: Methods now "protected"
 		}
 	}
 	
-	protected List<Employee> parseDocumentForEmployees(Document xmlDocument) 
+	private List<Employee> parseDocumentForEmployees(Document xmlDocument) 
 			throws ParseEmployeeXmlException {													///NOTE: Wrapped throws to next line to keep width down.
 		
 		List<Employee> employeesFromXml = new ArrayList<Employee>();							///NOTE: Return var is separate and declared first.
@@ -71,7 +71,7 @@ public class DomParserExample {																	///NOTE: Methods now "protected"
 		return employeesFromXml;
 	}
 
-	protected Employee getEmployeeFromXmlNode(Node employeeNode)								///NOTE: Do we need jDoc with this kind of name? 
+	private Employee getEmployeeFromXmlNode(Node employeeNode)									///NOTE: Do we need jDoc with this kind of name? 
 			throws ParseEmployeeXmlException {
 		
 		Element employeeElement = (Element)employeeNode;										///NOTE: Could have done this cast in each method.  Should we?
@@ -84,7 +84,7 @@ public class DomParserExample {																	///NOTE: Methods now "protected"
 		return new Employee(name,id,age,type);													///NOTE: Returned on creation.  Like or dislike?
 	}
 
-	protected String getStringValueByTagName(Element employeeElement, String nodeTagName) 
+	private String getStringValueByTagName(Element employeeElement, String nodeTagName) 
 			throws ParseEmployeeXmlException {
 		
 		NodeList nodesInEmployeeElement = employeeElement.getElementsByTagName(nodeTagName);
@@ -97,13 +97,13 @@ public class DomParserExample {																	///NOTE: Methods now "protected"
 		return el.getFirstChild().getNodeValue();
 	}
 
-	protected int getIntValueByTagName(Element ele, String tagName) 							///NOTE: Is this wrapper handy, or clutter?
+	private int getIntValueByTagName(Element ele, String tagName) 								///NOTE: Is this wrapper handy, or clutter?
 			throws NumberFormatException, ParseEmployeeXmlException {
 		
 		return Integer.parseInt(getStringValueByTagName(ele,tagName));							///NOTE: Would this be less confusing on two lines?
 	}
 	
-	protected void printEmployeesToConsole(List<Employee> employees) {
+	private void printEmployeesToConsole(List<Employee> employees) {
 		
 		System.out.println("No of Employees '" + employees.size() + "'.");
 		Iterator<Employee> it = employees.iterator();											///NOTE: No longer a generic.
