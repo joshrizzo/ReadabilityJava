@@ -33,7 +33,7 @@ public class DomParserExampleTests {
 		Document doc = null;
 		try {
 			DocumentBuilder db = dbf.newDocumentBuilder();
-			doc = db.parse("employees.xml");
+			doc = db.parse("employeesTestData.xml");
 		}
 		catch (ParserConfigurationException | SAXException | IOException exception) {
 			// Do nothing.
@@ -76,10 +76,10 @@ public class DomParserExampleTests {
 	}
 
 	@Test
-	public void test_getEmployeeFromXmlNode_getsAnExpectedEmployee() 
+	public void test_buildEmployeeFromXmlNode_getsAnExpectedEmployee() 
 			throws ParseEmployeeXmlException {
 		Node employeeNode = this.getTestEmployeeNode();
-		Employee retval = this.target.getEmployeeFromXmlNode(employeeNode);
+		Employee retval = this.target.buildEmployeeFromXmlNode(employeeNode);
 		assertEquals("Employee Details - Name:Seagull, Type:permanent, Id:3674, Age:34.", 
 				retval.toString());
 	}

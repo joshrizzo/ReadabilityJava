@@ -1,4 +1,4 @@
-package step4_RefactoredCode;
+package step5_SeaparateAbstractions;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -28,7 +28,7 @@ public abstract class XmlDocumentParser {
 			return Integer.parseInt(getStringValueByTagName(ele,tagName));
 		} 
 		catch (NumberFormatException exception) {
-			return -1;																		///NOTE: Do we like this?
+			return -1;
 		}
 	}
 }

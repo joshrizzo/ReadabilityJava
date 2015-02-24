@@ -64,14 +64,14 @@ public class DomParserExample {																	///NOTE: Methods now "protected"
 		
 		for (int i = 0; i < nodesInRoot.getLength(); i++) {										///NOTE: Too bad NodeList is not iterable... 
 			Node nodeFromXml = nodesInRoot.item(i);												///NOTE: Should we make this method one line?
-			Employee employeeFromXml = getEmployeeFromXmlNode(nodeFromXml);
+			Employee employeeFromXml = buildEmployeeFromXmlNode(nodeFromXml);
 			employeesFromXml.add(employeeFromXml);												///NOTE: Are these var names confusing?
 		}
 		
 		return employeesFromXml;
 	}
 
-	protected Employee getEmployeeFromXmlNode(Node employeeNode)								///NOTE: Do we need jDoc with this kind of name? 
+	protected Employee buildEmployeeFromXmlNode(Node employeeNode)								///NOTE: Do we need jDoc with this kind of name? 
 			throws ParseEmployeeXmlException {
 		
 		Element employeeElement = (Element)employeeNode;										///NOTE: Could have done this cast in each method.  Should we?

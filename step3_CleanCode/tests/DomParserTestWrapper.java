@@ -38,10 +38,10 @@ public class DomParserTestWrapper extends DomParserExample {
 		return super.parseDocumentForEmployees(xmlDocument);
 	}
 
-	public Employee getEmployeeFromXmlNode(Node employeeNode) 
+	public Employee buildEmployeeFromXmlNode(Node employeeNode) 
 			throws ParseEmployeeXmlException {
 		this.calledGetEmployeeFromXmlNode += 1;
-		return super.getEmployeeFromXmlNode(employeeNode);
+		return super.buildEmployeeFromXmlNode(employeeNode);
 	}
 
 	public String getStringValueByTagName(Element employeeElement, String nodeTagName) 
