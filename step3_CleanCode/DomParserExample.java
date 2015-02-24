@@ -21,7 +21,7 @@ import common.ParseEmployeeXmlException;
 
 public class DomParserExample {																	///NOTE: Methods now "protected" level for testability.
 	
-	public static void main() {																	///NOTE: Main() at top of class.
+	public static void main(String[] args) {													///NOTE: Main() at top of class.
 		
 		try {
 			new DomParserExample().runExample();												///NOTE: This is all on one line now.
@@ -76,9 +76,9 @@ public class DomParserExample {																	///NOTE: Methods now "protected"
 		
 		Element employeeElement = (Element)employeeNode;										///NOTE: Could have done this cast in each method.  Should we?
 		
-		String name = getStringValueByTagName(employeeElement,"Name");							///NOTE: Used white space to separate sections.
-		int id = getIntValueByTagName(employeeElement,"Id");
-		int age = getIntValueByTagName(employeeElement,"Age");
+		String name = getStringValueByTagName(employeeElement, "Name");							///NOTE: Used white space to separate sections.
+		int id = getIntValueByTagName(employeeElement, "Id");
+		int age = getIntValueByTagName(employeeElement, "Age");
 		String type = employeeElement.getAttribute("type");
 
 		return new Employee(name,id,age,type);													///NOTE: Returned on creation.  Like or dislike?
@@ -90,7 +90,8 @@ public class DomParserExample {																	///NOTE: Methods now "protected"
 		NodeList nodesInEmployeeElement = employeeElement.getElementsByTagName(nodeTagName);
 
 		if(nodesInEmployeeElement == null || nodesInEmployeeElement.getLength() != 1) {			///NOTE: Another guard statement.  Note the check for exactly one element.
-			throw new ParseEmployeeXmlException("There wasn't exactly one Name element.");
+			throw new ParseEmployeeXmlException(
+					"There wasn't exactly one " + nodeTagName + " element.");
 		}
 		
 		Element el = (Element)nodesInEmployeeElement.item(0);									///NOTE: Should this be on one line or two?
