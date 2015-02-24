@@ -11,20 +11,27 @@ import common.ParseEmployeeXmlException;
 public class DomParserExample {
 	
 	private String employeeXmlLocation = "employees.xml";
+	private XmlDocumentLoader xmlDocLoader;
+	private EmployeeDocumentParser employeeDocParser;
 
 	public static void main(String[] args) {
 		
 		try {
-			new DomParserExample().runExample();
+			new DomParserExample(new XmlDocumentLoader(), new EmployeeDocumentParser()).runExample();
 		} 
 		catch (ParseEmployeeXmlException exception) {
 			exception.printStackTrace();
 		}
 	}
+	
+	public DomParserExample(XmlDocumentLoader xmlDocLoader,EmployeeDocumentParser employeeDocParser) {
+		this.xmlDocLoader = xmlDocLoader;
+		this.employeeDocParser = employeeDocParser;
+	}
 
 	public void runExample() throws ParseEmployeeXmlException {
-		Document documentFromFile = new XmlDocumentLoader().parseXmlFile(this.employeeXmlLocation);
-		List<Employee> employees = new EmployeeDocumentParser().parseDocumentForEmployees(documentFromFile);
+		Document documentFromFile = xmlDocLoader.parseXmlFile(this.employeeXmlLocation);
+		List<Employee> employees = employeeDocParser.parseDocumentForEmployees(documentFromFile);
 		printEmployeesToConsole(employees);
 	}
 	
