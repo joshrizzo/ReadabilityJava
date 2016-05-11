@@ -37,6 +37,6 @@ public class XmlDocumentParserTests {
 			throws NumberFormatException, ParseEmployeeXmlException {
 		Element employeeElement = (Element)TestDataFactory.getTestEmployeeNode();
 		int retval = this.target.getIntValueByTagName(employeeElement, "Age");
-		assertEquals(-1, retval);
+		assertEquals(34, retval);
 	}
 }

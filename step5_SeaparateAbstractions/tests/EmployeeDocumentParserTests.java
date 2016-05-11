@@ -33,7 +33,7 @@ public class EmployeeDocumentParserTests {
 			throws ParseEmployeeXmlException {
 		Node employeeNode = TestDataFactory.getTestEmployeeNode();
 		Employee retval = this.target.buildEmployeeFromXmlNode(employeeNode);
-		assertEquals("Employee Details - Name:Seagull, Type:permanent, Id:3674, Age:-1.", 
+		assertEquals("Employee Details - Name:Seagull, Type:permanent, Id:3674, Age:34.",
 				retval.toString());
 	}
 }
